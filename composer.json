@@ -15,12 +15,12 @@
     },
     "autoload": {
       "psr-4": {
-        "PendoNL\\ScheduleLogger\\": "src/"
+        "PendoNL\\LaravelScheduleLogger\\": "src/"
       }
     },
     "autoload-dev": {
       "psr-4": {
-        "PendoNL\\ScheduleLogger\\Test\\": "tests"
+        "PendoNL\\LaravelScheduleLogger\\Test\\": "tests"
       }
     },
     "license": "MIT"
