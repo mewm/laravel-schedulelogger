@@ -1,6 +1,6 @@
 <?php
 
-namespace PendoNL\ScheduleLogger\Console\Scheduling;
+namespace PendoNL\LaravelScheduleLogger\Console\Scheduling;
 
 use Illuminate\Console\Scheduling\Event;
 

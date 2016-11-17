@@ -1,13 +1,13 @@
 <?php
 
-namespace PendoNL\LogSchedule;
+namespace PendoNL\LaravelScheduleLogger;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class LaravelPro6ppServiceProvider.
+ * Class ScheduleLoggerServiceProvider.
  */
-class LogScheduleServiceProvider extends ServiceProvider
+class ScheduleLoggerServiceProvider extends ServiceProvider
 {
     /**
      * Publishes the config file.
@@ -33,7 +33,7 @@ class LogScheduleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('laravel-schedulelogger', function () {
-            return new \PendoNL\ScheduleLogger\ScheduleLogger;
+            return new \PendoNL\LaravelScheduleLogger\ScheduleLogger;
         });
     }
 }

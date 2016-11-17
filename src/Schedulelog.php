@@ -1,6 +1,6 @@
 <?php
 
-namespace PendoNL\ScheduleLogger;
+namespace PendoNL\LaravelScheduleLogger;
 
 use Illuminate\Database\Eloquent\Model;
 

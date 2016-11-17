@@ -1,5 +1,5 @@
 {
-    "name": "pendonl/laravel-logschedule",
+    "name": "pendonl/laravel-schedulelogger",
     "description": "Log execution time of scheduled tasks in Laravel",
     "authors": [
         {
@@ -15,12 +15,12 @@
     },
     "autoload": {
       "psr-4": {
-        "PendoNL\\LogSchedule\\": "src/"
+        "PendoNL\\ScheduleLogger\\": "src/"
       }
     },
     "autoload-dev": {
       "psr-4": {
-        "PendoNL\\LogSchedule\\Test\\": "tests"
+        "PendoNL\\ScheduleLogger\\Test\\": "tests"
       }
     },
     "license": "MIT"
