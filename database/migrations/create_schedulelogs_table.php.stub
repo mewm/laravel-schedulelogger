@@ -16,8 +16,8 @@ class CreateSchedulelogsTable extends Migration
             $table->increments('id');
             $table->string('command_name');
             $table->string('type');
-            $table->bigInteger('start');
-            $table->bigInteger('end')->nullable()->default('NULL');
+            $table->timestamp('start');
+            $table->timestamp('end')->nullable();
         });
     }
 

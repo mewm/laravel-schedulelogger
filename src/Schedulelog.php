@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedulelog extends Model
 {
 
-    protected $fillable = ['command_name','type','start','end'];
+    protected $fillable = ['command_name','start','end'];
 
     public $timestamps = false;
 
