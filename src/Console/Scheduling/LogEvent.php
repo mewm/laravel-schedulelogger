@@ -26,12 +26,14 @@ class LogEvent extends Event
      */
     function registerScheduleLogger()
     {
-        $this->before(function($this) {
-            ScheduleLogger::start($this->command);
+        $command = $this->command;
+
+        $this->before(function() use($command) {
+            app()->make('laravel-schedulelogger')->start($command);
         });
 
-        $this->after(function($this) {
-            ScheduleLogger::end($this->command);
+        $this->after(function() use($command) {
+            app()->make('laravel-schedulelogger')->end($command);
         });
     }
 
