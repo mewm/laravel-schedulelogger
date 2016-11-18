@@ -35,7 +35,8 @@ class ScheduleLogger
     public function log($command_name, $type) {
         return Schedulelog::create([
             'command_name' => $command_name,
-            'type' => $type
+            'type' => $type,
+            'created_at' => \Carbon\Carbon::now()
         ]);
     }
 
