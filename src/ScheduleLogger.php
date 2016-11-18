@@ -47,11 +47,11 @@ class ScheduleLogger
             return Schedulelog::create([
                 'command_name' => $command_name,
                 'type' => $type,
-                'start' => \Carbon\Carbon::now()
+                'start' => microtime()
             ]);
         } else {
             $log = Schedulelog::find($this->activeLogs[$command_name]);
-            $log->end = \Carbon\Carbon::now();
+            $log->end = microtime();
             $log->save();
 
             return $log;
