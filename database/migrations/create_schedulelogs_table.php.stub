@@ -16,7 +16,8 @@ class CreateSchedulelogsTable extends Migration
             $table->increments('id');
             $table->string('command_name');
             $table->string('type');
-            $table->dateTime('created_at');
+            $table->dateTime('start');
+            $table->dateTime('end');
         });
     }
 

@@ -5,6 +5,8 @@ namespace PendoNL\LaravelScheduleLogger;
 class ScheduleLogger
 {
 
+    private $activeLogs = [];
+
     /**
      * Log the start of an event
      *
@@ -12,7 +14,11 @@ class ScheduleLogger
      * @return mixed
      */
     public function start($command_name) {
-        return $this->log($command_name, 'start');
+        $log = $this->log($command_name, 'start');
+
+        $this->activeLogs[$command_name] = $log['id'];
+
+        return $log;
     }
 
     /**
@@ -22,7 +28,11 @@ class ScheduleLogger
      * @return mixed
      */
     public function end($command_name) {
-        return $this->log($command_name, 'end');
+        $log = $this->log($command_name, 'end');
+
+        unset($this->log[$command_name]);
+
+        return $log;
     }
 
     /**
@@ -33,11 +43,20 @@ class ScheduleLogger
      * @return mixed
      */
     public function log($command_name, $type) {
-        return Schedulelog::create([
-            'command_name' => $command_name,
-            'type' => $type,
-            'created_at' => \Carbon\Carbon::now()
-        ]);
+        if(is_null($this->activeLogs[$command_name])) {
+            return Schedulelog::create([
+                'command_name' => $command_name,
+                'type' => $type,
+                'created_at' => \Carbon\Carbon::now()
+            ]);
+        } else {
+            $log = Schedulelog::find($this->activeLogs[$command_name]);
+            $log->end = \Carbon\Carbon::now();
+            $log->save();
+
+            return $log;
+        }
+
     }
 
 }
