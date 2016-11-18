@@ -11,23 +11,22 @@ class LogEvent extends Event
      * Create a new event instance.
      *
      * @param  string  $command
+     * @param  string  $rawCommand
      */
-    public function __construct($command)
+    public function __construct($command, $rawCommand)
     {
         $this->command = $command;
         $this->output = $this->getDefaultOutput();
 
-        $this->registerScheduleLogger();
+        $this->registerScheduleLogger($rawCommand);
     }
 
     /**
      * Add the logger functions to the before and
      * after calls of the event.
      */
-    function registerScheduleLogger()
+    function registerScheduleLogger($command)
     {
-        $command = $this->command;
-
         $this->before(function() use($command) {
             app()->make('laravel-schedulelogger')->start($command);
         });
