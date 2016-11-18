@@ -47,7 +47,7 @@ class ScheduleLogger
             return Schedulelog::create([
                 'command_name' => $command_name,
                 'type' => $type,
-                'created_at' => \Carbon\Carbon::now()
+                'start' => \Carbon\Carbon::now()
             ]);
         } else {
             $log = Schedulelog::find($this->activeLogs[$command_name]);
