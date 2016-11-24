@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 /**
  * Class ScheduleLoggerServiceProvider.
  */
-class ScheduleLoggerServiceProvider extends ServiceProvider
+class LaravelScheduleLoggerServiceProvider extends ServiceProvider
 {
     /**
      * Publishes the config file.
