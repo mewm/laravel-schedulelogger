@@ -37,7 +37,7 @@ class ScheduleLoggerServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton('laravel-schedulelogger', function () {
-            return new \PendoNL\LaravelScheduleLogger\ScheduleLogger;
+            return new \PendoNL\LaravelScheduleLogger\LaravelScheduleLogger;
         });
     }
 }

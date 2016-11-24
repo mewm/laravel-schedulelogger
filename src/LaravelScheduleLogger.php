@@ -2,7 +2,7 @@
 
 namespace PendoNL\LaravelScheduleLogger;
 
-class ScheduleLogger
+class LaravelScheduleLogger
 {
 
     /**
