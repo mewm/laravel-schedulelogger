@@ -43,7 +43,6 @@ class LaravelScheduleLogger
 
         } else {
 
-            $log = Schedulelog::find($log->id);
             $log->end = microtime(true);
             $log->save();
 
