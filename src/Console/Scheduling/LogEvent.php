@@ -6,12 +6,11 @@ use Illuminate\Console\Scheduling\Event;
 
 class LogEvent extends Event
 {
-
     /**
      * Create a new event instance.
      *
-     * @param  string  $command
-     * @param  string  $rawCommand
+     * @param string $command
+     * @param string $rawCommand
      */
     public function __construct($command, $rawCommand)
     {
@@ -25,15 +24,14 @@ class LogEvent extends Event
      * Add the logger functions to the before and
      * after calls of the event.
      */
-    function registerScheduleLogger($command)
+    public function registerScheduleLogger($command)
     {
-        $this->before(function() use($command) {
+        $this->before(function () use ($command) {
             app()->make('laravel-schedulelogger')->start($command);
         });
 
-        $this->after(function() use($command) {
+        $this->after(function () use ($command) {
             app()->make('laravel-schedulelogger')->end($command);
         });
     }
-
 }
