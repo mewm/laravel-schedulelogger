@@ -32,10 +32,6 @@ class LaravelScheduleLoggerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->instance(
-            'Illuminate\Console\Scheduling\Schedule', $schedule = new \PendoNL\LaravelScheduleLogger\Console\Scheduling\LogSchedule
-        );
-
         $this->app->singleton('laravel-schedulelogger', function () {
             return new \PendoNL\LaravelScheduleLogger\LaravelScheduleLogger;
         });
