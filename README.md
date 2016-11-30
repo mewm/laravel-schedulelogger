@@ -1,6 +1,6 @@
 # Log execution time of scheduled tasks in Laravel
 
-[![Latest version on Packagist](https://img.shields.io/packagist/v/pendonl/schedulelogger.svg?style=flat-square)](https://packagist.org/packages/pendonl/laravel-schedulelogger)
+[![Latest version on Packagist](https://img.shields.io/packagist/v/pendonl/laravel-schedulelogger.svg?style=flat-square)](https://packagist.org/packages/pendonl/laravel-schedulelogger)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Travis branch](https://img.shields.io/travis/PendoNL/schedulelogger/master.svg)](https://travis-ci.org/PendoNL/laravel-schedulelogger)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/PendoNL/schedulelogger.svg)](https://scrutinizer-ci.com/g/PendoNL/laravel-schedulelogger/)
@@ -19,21 +19,21 @@ Install the package using composer:
 Add the Service Provider and Facade to config/app.php:
 
 ```php
-   'providers' => [
-        ...
-        PendoNL\LaravelScheduleLogger\LaravelScheduleLoggerServiceProvider::class,
-        ...
-   ]
+'providers' => [
+    ...
+    PendoNL\LaravelScheduleLogger\LaravelScheduleLoggerServiceProvider::class,
+    ...
+]
 ```
 
 and
 
 ```php
-    'aliases' => [
-        ...
-        'LogSchedule' => PendoNL\LaravelScheduleLogger\Facade::class,
-        ...
-    ]
+'aliases' => [
+    ...
+    'LogSchedule' => PendoNL\LaravelScheduleLogger\Facade::class,
+    ...
+]
 ```
 
 Next step is to publish and run the migrations:
@@ -46,25 +46,25 @@ php artisan migrate
 Then we must replace the default Schedule instance that is used by events, for this we need to edit app/Console/Kernel.php. At the bottom of the file add this method:
 
 ```php
-   /**
-     * Define the application's command schedule.
-     *
-     * @return void
-     */
-    protected function defineConsoleSchedule()
-    {
-        if (App::environment('local', 'staging')) {
-                    $this->app->instance(
-                        'Illuminate\Console\Scheduling\Schedule', $schedule = new \PendoNL\LaravelScheduleLogger\Console\Scheduling\LogSchedule
-                    );
-                } else {
-                    $this->app->instance(
-                        'Illuminate\Console\Scheduling\Schedule', $schedule = new Schedule
-                    );
-                }
-
-        $this->schedule($schedule);
+/**
+ * Define the application's command schedule.
+ *
+ * @return void
+ */
+protected function defineConsoleSchedule()
+{
+    if (App::environment('local', 'staging')) {
+        $this->app->instance(
+            'Illuminate\Console\Scheduling\Schedule', $schedule = new \PendoNL\LaravelScheduleLogger\Console\Scheduling\LogSchedule
+        );
+    } else {
+        $this->app->instance(
+            'Illuminate\Console\Scheduling\Schedule', $schedule = new Schedule
+        );
     }
+    
+    $this->schedule($schedule);
+}
 ```
 
 Also make sure you import the App Facade at top of app/Console/Kernel.php:
@@ -80,16 +80,21 @@ After this is done, test the setup by running `php artisan schedule:run`, if eve
 To display the information on screen you can import the model in your controller:
 
 ```php
-use \PendoNL\
+use PendoNL\LaravelScheduleLogger\Schedulelog;
+```
+
+After this, it's just a mather of getting the records. The LogSchedule Facade has a simple method to return the execution time in milliseconds. Below is an example.
+
+```php
+foreach(Schedulelog::take(10)->get() as $log) {
+    $ms = LogSchedule::getExecutiontime($log);
+    echo "Execution of command [$log->command_name] took [$ms] milliseconds";
+}
 ```
 
 ## Security
 
 If you discover any security related issues, please email joshua@pendo.nl instead of using the issue tracker.
-
-## Credits
-
-Thanks to Pro6PP for their efforts to create, maintain and update a postal database for a fair price.
 
 ## About Pendo
 Pendo is a webdevelopment agency based in Maastricht, Netherlands. If you'd like, you can [visit our website](https://pendo.nl).
