@@ -2,10 +2,10 @@
 
 [![Latest version on Packagist](https://img.shields.io/packagist/v/pendonl/laravel-schedulelogger.svg?style=flat-square)](https://packagist.org/packages/pendonl/laravel-schedulelogger)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Travis branch](https://img.shields.io/travis/PendoNL/schedulelogger/master.svg)](https://travis-ci.org/PendoNL/laravel-schedulelogger)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/PendoNL/schedulelogger.svg)](https://scrutinizer-ci.com/g/PendoNL/laravel-schedulelogger/)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/0bcf56eb-37d1-4525-a4ef-2375d03563aa.svg)](https://insight.sensiolabs.com/projects/e660c560-9d50-43e3-9be1-e556ba78f189)
-[![Style Ci](https://styleci.io/repos/73438968/shield)](https://styleci.io/repos/73438968/)
+[![Travis branch](https://img.shields.io/travis/PendoNL/laravel-schedulelogger/master.svg)](https://travis-ci.org/PendoNL/laravel-schedulelogger)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/PendoNL/laravel-schedulelogger.svg)](https://scrutinizer-ci.com/g/PendoNL/laravel-schedulelogger/)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/9651207b-70ba-4b0d-a1ce-dd3329b66649.svg)](https://insight.sensiolabs.com/projects/9651207b-70ba-4b0d-a1ce-dd3329b66649)
+[![Style Ci](https://styleci.io/repos/74034902/shield)](https://styleci.io/repos/74034902/)
 [![Github All Releases](https://img.shields.io/github/downloads/pendo/pro6pp-php-wrapper/total.svg)](https://github.com/pendonl/laravel-schedulelogger)
 
 This package automatically logs the execution times of scheduled tasks in Laravel. Simply replace the default Schedule class by the LogSchedule class and times will be saved to the database by default.
