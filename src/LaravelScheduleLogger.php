@@ -52,4 +52,15 @@ class LaravelScheduleLogger
 
     }
 
+    /**
+     * Returns the execution time in ms
+     *
+     * @param Schedulelog $log
+     * @return mixed
+     */
+    public function getExecutionTime(Schedulelog $log)
+    {
+        return $log->end - $log->start;
+    }
+
 }
