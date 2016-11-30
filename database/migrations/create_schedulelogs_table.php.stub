@@ -6,7 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSchedulelogsTable extends Migration
 {
-
     /**
      * Run the migrations.
      */
@@ -15,7 +14,6 @@ class CreateSchedulelogsTable extends Migration
         Schema::create('schedulelogs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('command_name');
-            $table->string('type');
             $table->bigInteger('start');
             $table->bigInteger('end')->nullable();
         });
