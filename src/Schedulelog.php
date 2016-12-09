@@ -8,7 +8,7 @@ class Schedulelog extends Model
 {
     protected $fillable = ['command_name', 'start', 'end'];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * Set start attribute. Multiply by 1000 to get milliseconds as integer.
