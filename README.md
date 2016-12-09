@@ -14,7 +14,7 @@ This package automatically logs the execution times of scheduled tasks in Larave
 
 Install the package using composer:
 
-`composer require pendonl/laravel-logschedule`
+`composer require pendonl/laravel-schedulelogger`
 
 Add the Service Provider and Facade to config/app.php:
 
@@ -39,7 +39,7 @@ and
 Next step is to publish and run the migrations:
 
 ```console
-php artisan vendor:publish
+php artisan vendor:publish --provider="PendoNL\LaravelScheduleLogger\LaravelScheduleLoggerServiceProvider"
 php artisan migrate
 ```
 
