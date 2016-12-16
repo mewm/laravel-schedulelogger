@@ -3,7 +3,7 @@
 namespace PendoNL\LaravelScheduleLogger;
 
 use Illuminate\Support\ServiceProvider;
-use PendoNL\LaravelScheduleLogger\Commands\CleanScheduleLoggerCommand;
+use PendoNL\LaravelScheduleLogger\CleanScheduleLoggerCommand;
 
 /**
  * Class ScheduleLoggerServiceProvider.
