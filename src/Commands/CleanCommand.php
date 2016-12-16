@@ -13,7 +13,7 @@ class CleanCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'schedulelogger:clean';
+    protected $signature = 'schedulelogger:clean {days=30}';
 
     /**
      * The console command description.
@@ -26,7 +26,7 @@ class CleanCommand extends Command
     {
         $this->comment('Cleaning schedule log...');
 
-        $maxAgeInDays = 30;
+        $maxAgeInDays = $this->argument('days');
 
         $cutOffDate = Carbon::now()->subDays($maxAgeInDays)->format('Y-m-d H:i:s');
 
