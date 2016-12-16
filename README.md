@@ -97,6 +97,10 @@ foreach(Schedulelog::take(10)->get() as $log) {
 }
 ```
 
+## Credits
+- [Joshua de Gier](mailto:joshua@pendo.nl)
+- [Stijn Vanouplines](mailto:stijn@solitweb.be)
+
 ## Security
 
 If you discover any security related issues, please email joshua@pendo.nl instead of using the issue tracker.
