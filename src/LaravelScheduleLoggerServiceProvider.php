@@ -3,6 +3,7 @@
 namespace PendoNL\LaravelScheduleLogger;
 
 use Illuminate\Support\ServiceProvider;
+use PendoNL\CleanScheduleLoggerCommand\Commands\CleanScheduleLoggerCommand;
 
 /**
  * Class ScheduleLoggerServiceProvider.
@@ -35,5 +36,11 @@ class LaravelScheduleLoggerServiceProvider extends ServiceProvider
         $this->app->singleton('laravel-schedulelogger', function () {
             return new \PendoNL\LaravelScheduleLogger\LaravelScheduleLogger();
         });
+
+        $this->app->bind('command.schedulelogger:clean', CleanScheduleLoggerCommand::class);
+
+        $this->commands([
+            'command.schedulelogger:clean',
+        ]);
     }
 }
