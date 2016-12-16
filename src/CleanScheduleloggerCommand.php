@@ -5,7 +5,6 @@ namespace PendoNL\LaravelScheduleLogger;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-
 class CleanScheduleloggerCommand extends Command
 {
     /**
