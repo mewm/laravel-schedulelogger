@@ -79,6 +79,7 @@ You can clean the log with this command `php artisan schedulelogger:clean`. Or b
 ```php
 $schedule->command('schedulelogger:clean');
 ```
+You can specify the amount of logs to keep. The argument `days` is optional and default to 30 days.
 
 ## Showing execution times
 
