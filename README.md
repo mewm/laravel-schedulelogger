@@ -75,10 +75,11 @@ use App;
 
 After this is done, test the setup by running `php artisan schedule:run`, if everything worked out you see no errors and in your database the table `schedulelogs` is filled with X records.
 
-You can clean the log with this command `php artisan schedulelogger:clean`. Ore by adding this schedule job:
+You can clean the log with this command `php artisan schedulelogger:clean`. Or by adding this schedule job:
 ```php
 $schedule->command('schedulelogger:clean');
 ```
+You can specify the amount of logs to keep. The argument `days` is optional and default to 30 days.
 
 ## Showing execution times
 
@@ -96,6 +97,10 @@ foreach(Schedulelog::take(10)->get() as $log) {
     echo "Execution of command [$log->command_name] took [$ms] milliseconds";
 }
 ```
+
+## Credits
+- [Joshua de Gier](mailto:joshua@pendo.nl)
+- [Stijn Vanouplines](mailto:stijn@solitweb.be)
 
 ## Security
 
