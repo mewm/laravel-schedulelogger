@@ -26,7 +26,7 @@ class CleanCommand extends Command
     {
         $maxAgeInDays = $this->argument('days');
 
-        $this->comment("Cleaning schedule log, but keeping the records of the last {$maxAgeInDays}...");
+        $this->comment("Cleaning schedule log, but keeping the records of the last {$maxAgeInDays} days...");
 
         $cutOffDate = Carbon::now()->subDays($maxAgeInDays)->format('Y-m-d H:i:s');
 
