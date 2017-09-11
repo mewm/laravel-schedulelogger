@@ -48,7 +48,7 @@ class LogSchedule extends Schedule
             $command .= ' '.$this->compileParameters($parameters);
         }
 
-        $this->events[] = $event = new LogEvent($command, $this->rawCommand);
+        $this->events[] = $event = new LogEvent($this->mutex, $command, $this->rawCommand);
 
         return $event;
     }
