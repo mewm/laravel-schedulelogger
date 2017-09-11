@@ -3,6 +3,7 @@
 namespace PendoNL\LaravelScheduleLogger\Console\Scheduling;
 
 use Illuminate\Console\Scheduling\Event;
+use Illuminate\Console\Scheduling\Mutex;
 
 class LogEvent extends Event
 {
@@ -12,8 +13,11 @@ class LogEvent extends Event
      * @param string $command
      * @param string $rawCommand
      */
-    public function __construct($command, $rawCommand)
+    public function __construct(Mutex $mutex, $command, $rawCommand)
     {
+        parent::__construct($mutex, $command);
+
+        $this->mutex = $mutex;
         $this->command = $command;
         $this->output = $this->getDefaultOutput();
 
