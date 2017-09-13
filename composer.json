@@ -23,5 +23,15 @@
         "PendoNL\\LaravelScheduleLogger\\Test\\": "tests"
       }
     },
-    "license": "MIT"
+    "license": "MIT",
+ +  "extra": {
+ +        "laravel": {
+ +            "providers": [
+ +                "PendoNL\LaravelScheduleLogger\LaravelScheduleLoggerServiceProvider"
+ +            ],
+ +            "aliases": {
+ +                "LogSchedule": "PendoNL\LaravelScheduleLogger\Facade"
+ +            }
+ +        }
+ +    }
 }
