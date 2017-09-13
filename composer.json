@@ -27,10 +27,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "PendoNL\LaravelScheduleLogger\LaravelScheduleLoggerServiceProvider"
+        "PendoNL\\LaravelScheduleLogger\\LaravelScheduleLoggerServiceProvider"
       ],
       "aliases": {
-        "LogSchedule": "PendoNL\LaravelScheduleLogger\Facade"
+        "LogSchedule": "PendoNL\\LaravelScheduleLogger\\Facade"
       }
     }
   }
