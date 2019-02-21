@@ -9,15 +9,11 @@ use PendoNL\LaravelScheduleLogger\Schedulelog;
 class CleanCommand extends Command
 {
     /**
-     * The console command name.
-     *
      * @var string
      */
     protected $signature = 'schedulelogger:clean {days=30}';
 
     /**
-     * The console command description.
-     *
      * @var string
      */
     protected $description = 'Clean up old records from the schedule log.';

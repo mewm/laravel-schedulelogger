@@ -5,60 +5,41 @@ namespace PendoNL\LaravelScheduleLogger;
 class LaravelScheduleLogger
 {
     /**
-     * Log the start of an event.
-     *
-     * @param $command_name
-     *
-     * @return mixed
+     * @string
      */
-    public function start($command_name)
+    private $memoryUsageOnStart;
+
+
+    public function start(string $commandName)
     {
-        return $this->log($command_name);
+        return $this->log($commandName);
     }
 
-    /**
-     * Log the end of an event.
-     *
-     * @param $command_name
-     *
-     * @return mixed
-     */
-    public function end($command_name)
+
+    public function end(string $commandName)
     {
-        return $this->log($command_name);
+        return $this->log($commandName);
     }
 
-    /**
-     * Save the event to the database.
-     *
-     * @param $command_name
-     *
-     * @return mixed
-     */
-    public function log($command_name)
+
+    public function log(string $commandName): Schedulelog
     {
-        $log = Schedulelog::where('end', null)->latest('id', 'DESC')->first();
+        $log = Schedulelog::getLatest();
 
-        if (count($log) == 0) {
-            return Schedulelog::create([
-                'command_name' => $command_name,
-                'start'        => microtime(true),
-            ]);
-        } else {
-            $log->end = microtime(true);
-            $log->save();
+        if ($log === null) {
+            $this->memoryUsageOnStart = memory_get_usage(false);
 
-            return $log;
+            return Schedulelog::initiate($commandName);
         }
+
+        $memoryPeak = (memory_get_peak_usage(false) - $this->memoryUsageOnStart) / 1024 / 1024;
+
+        $log->end();
+
+        return $log;
     }
 
-    /**
-     * Returns the execution time in ms.
-     *
-     * @param Schedulelog $log
-     *
-     * @return mixed
-     */
+
     public function getExecutionTime(Schedulelog $log)
     {
         return $log->end - $log->start;

@@ -7,13 +7,7 @@ use Illuminate\Console\Scheduling\Mutex;
 
 class LogEvent extends Event
 {
-    /**
-     * Create a new event instance.
-     *
-     * @param string $command
-     * @param string $rawCommand
-     */
-    public function __construct(Mutex $mutex, $command, $rawCommand)
+    public function __construct(Mutex $mutex, string $command, string $rawCommand)
     {
         parent::__construct($mutex, $command);
 
@@ -24,11 +18,7 @@ class LogEvent extends Event
         $this->registerScheduleLogger($rawCommand);
     }
 
-    /**
-     * Add the logger functions to the before and
-     * after calls of the event.
-     */
-    public function registerScheduleLogger($command)
+    public function registerScheduleLogger(string $command)
     {
         $this->before(function () use ($command) {
             app()->make('laravel-schedulelogger')->start($command);

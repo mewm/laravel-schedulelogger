@@ -2,6 +2,7 @@
 
 namespace PendoNL\LaravelScheduleLogger\Console\Scheduling;
 
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Container\Container;
 use Symfony\Component\Process\PhpExecutableFinder;
@@ -9,17 +10,16 @@ use Symfony\Component\Process\ProcessUtils;
 
 class LogSchedule extends Schedule
 {
+    /**
+     * @var
+     */
     private $rawCommand;
 
     /**
-     * Add a new Artisan command event to the schedule.
-     *
      * @param string $command
      * @param array  $parameters
-     *
-     * @return \Illuminate\Console\Scheduling\Event
      */
-    public function command($command, array $parameters = [])
+    public function command(string $command, array $parameters = []) : Event
     {
         $this->rawCommand = $command;
 
@@ -28,21 +28,16 @@ class LogSchedule extends Schedule
         }
 
         $binary = ProcessUtils::escapeArgument((new PhpExecutableFinder())->find(false));
-
         $artisan = defined('ARTISAN_BINARY') ? ProcessUtils::escapeArgument(ARTISAN_BINARY) : 'artisan';
 
         return $this->exec("{$binary} {$artisan} {$command}", $parameters);
     }
 
     /**
-     * Add a new command event to the schedule.
-     *
      * @param string $command
      * @param array  $parameters
-     *
-     * @return \Illuminate\Console\Scheduling\Event
      */
-    public function exec($command, array $parameters = [])
+    public function exec(string $command, array $parameters = []) : Event
     {
         if (count($parameters)) {
             $command .= ' '.$this->compileParameters($parameters);

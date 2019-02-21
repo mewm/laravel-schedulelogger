@@ -1,12 +1,5 @@
 # Log execution time of scheduled tasks in Laravel
 
-[![Latest version on Packagist](https://img.shields.io/packagist/v/pendonl/laravel-schedulelogger.svg?style=flat-square)](https://packagist.org/packages/pendonl/laravel-schedulelogger)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Travis branch](https://img.shields.io/travis/PendoNL/laravel-schedulelogger/master.svg)](https://travis-ci.org/PendoNL/laravel-schedulelogger)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/PendoNL/laravel-schedulelogger.svg)](https://scrutinizer-ci.com/g/PendoNL/laravel-schedulelogger/)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/9651207b-70ba-4b0d-a1ce-dd3329b66649.svg)](https://insight.sensiolabs.com/projects/9651207b-70ba-4b0d-a1ce-dd3329b66649)
-[![Style Ci](https://styleci.io/repos/74034902/shield)](https://styleci.io/repos/74034902/)
-[![Total Downloads](https://img.shields.io/packagist/dt/pendonl/laravel-schedulelogger.svg?style=flat-square)](https://packagist.org/packages/pendonl/laravel-schedulelogger)
 
 This package automatically logs the execution times of scheduled tasks in Laravel. Simply replace the default Schedule class by the LogSchedule class and times will be saved to the database by default.
 
@@ -14,7 +7,7 @@ This package automatically logs the execution times of scheduled tasks in Larave
 
 Install the package using composer:
 
-`composer require pendonl/laravel-schedulelogger`
+`composer require mewm/laravel-schedulelogger`
 
 Add the Service Provider and Facade to config/app.php. (For Laravel 5.5 and up Auto-Discovery is enabled)
 
@@ -104,12 +97,6 @@ foreach(Schedulelog::take(10)->get() as $log) {
 - [Joshua de Gier](mailto:joshua@pendo.nl)
 - [Stijn Vanouplines](mailto:stijn@solitweb.be)
 
-## Security
-
-If you discover any security related issues, please email joshua@pendo.nl instead of using the issue tracker.
-
-## About Pendo
-Pendo is a webdevelopment agency based in Maastricht, Netherlands. If you'd like, you can [visit our website](https://pendo.nl).
 
 ## License
 

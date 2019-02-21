@@ -6,31 +6,38 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedulelog extends Model
 {
-    protected $fillable = ['command_name', 'start', 'end'];
+    /**
+     * @var array
+     */
+    protected $fillable = ['command_name', 'start',];
 
+    /**
+     * @var bool
+     */
     public $timestamps = true;
 
-    /**
-     * Set start attribute. Multiply by 1000 to get milliseconds as integer.
-     *
-     * @param $value
-     *
-     * @return string
-     */
-    public function setStartAttribute($value)
+
+    public function end(float $memoryPeak): void
     {
-        $this->attributes['start'] = number_format($value * 1000, 0, '', '');
+        $end                          = microtime(true) * 1000;
+        $this->memory_usage           = $memoryPeak;
+        $this->end                    = $end;
+        $this->execution_time_seconds = $end - $this->start / 1000;
+        $this->save();
     }
 
-    /**
-     * Set end attribute. Multiply by 1000 to get milliseconds as integer.
-     *
-     * @param $value
-     *
-     * @return string
-     */
-    public function setEndAttribute($value)
+
+    public function getLatest(): ?self
     {
-        $this->attributes['end'] = number_format($value * 1000, 0, '', '');
+        return self::where('end', null)->latest('id', 'DESC')->first();
+    }
+
+
+    public function initiate(string $commandName): self
+    {
+        return self::create([
+            'command_name' => $commandName,
+            'start'        => microtime(true) * 1000,
+        ]);
     }
 }
