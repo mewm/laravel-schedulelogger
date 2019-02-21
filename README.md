@@ -81,7 +81,7 @@ You can specify the amount of logs to keep. The argument `days` is optional and 
 To display the information on screen you can import the model in your controller:
 
 ```php
-use PendoNL\LaravelScheduleLogger\Schedulelog;
+use PendoNL\LaravelScheduleLogger\ScheduleLog;
 ```
 
 After this, it's just a mather of getting the records. The LogSchedule Facade has a simple method to return the execution time in milliseconds. Below is an example.

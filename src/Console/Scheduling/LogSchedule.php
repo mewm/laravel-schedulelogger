@@ -19,7 +19,7 @@ class LogSchedule extends Schedule
      * @param string $command
      * @param array  $parameters
      */
-    public function command(string $command, array $parameters = []) : Event
+    public function command($command, array $parameters = [])
     {
         $this->rawCommand = $command;
 
@@ -37,7 +37,7 @@ class LogSchedule extends Schedule
      * @param string $command
      * @param array  $parameters
      */
-    public function exec(string $command, array $parameters = []) : Event
+    public function exec($command, array $parameters = []) 
     {
         if (count($parameters)) {
             $command .= ' '.$this->compileParameters($parameters);
@@ -47,4 +47,5 @@ class LogSchedule extends Schedule
 
         return $event;
     }
+    
 }

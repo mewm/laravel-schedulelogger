@@ -4,8 +4,12 @@ namespace PendoNL\LaravelScheduleLogger;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Schedulelog extends Model
+class ScheduleLog extends Model
 {
+    /**
+     * @var string
+     */
+    protected $table = 'schedule_logs';
     /**
      * @var array
      */
@@ -20,20 +24,20 @@ class Schedulelog extends Model
     public function end(float $memoryPeak): void
     {
         $end                          = microtime(true) * 1000;
-        $this->memory_usage           = $memoryPeak;
+        $this->memory_usage_mb        = $memoryPeak;
         $this->end                    = $end;
-        $this->execution_time_seconds = $end - $this->start / 1000;
+        $this->execution_time_seconds = ($end - $this->start) / 1000;
         $this->save();
     }
 
 
-    public function getLatest(): ?self
+    public static function getLatest(): ?self
     {
         return self::where('end', null)->latest('id', 'DESC')->first();
     }
 
 
-    public function initiate(string $commandName): self
+    public static function initiate(string $commandName): self
     {
         return self::create([
             'command_name' => $commandName,

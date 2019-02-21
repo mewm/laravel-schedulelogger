@@ -8,7 +8,7 @@ class CreateSchedulelogsTable extends Migration
 {
     public function up() : void
     {
-        Schema::create('schedulelogs', function (Blueprint $table) {
+        Schema::create('schedule_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('command_name');
             $table->bigInteger('start');
@@ -21,6 +21,6 @@ class CreateSchedulelogsTable extends Migration
 
     public function down() : void
     {
-        Schema::drop('schedulelogs');
+        Schema::drop('schedule_logs');
     }
 }

@@ -4,7 +4,7 @@ namespace PendoNL\LaravelScheduleLogger\Commands;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use PendoNL\LaravelScheduleLogger\Schedulelog;
+use PendoNL\LaravelScheduleLogger\ScheduleLog;
 
 class CleanCommand extends Command
 {
@@ -26,7 +26,7 @@ class CleanCommand extends Command
 
         $cutOffDate = Carbon::now()->subDays($maxAgeInDays)->format('Y-m-d H:i:s');
 
-        $amountDeleted = Schedulelog::where('created_at', '<', $cutOffDate)->delete();
+        $amountDeleted = ScheduleLog::where('created_at', '<', $cutOffDate)->delete();
 
         $this->info("Deleted {$amountDeleted} record(s) from the schedule log.");
 
